@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}My Blog{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav class="bg-gray-800 p-4">
+            <div class="container mx-auto flex justify-between items-center">
+                <div class="text-white text-2xl font-bold">
+                    <a href="{% url 'post_list' %}">BlogWebsite</a>
+                </div>
+                <div class="hidden md:flex space-x-6">
+                    <a href="#" class="text-gray-300 hover:text-white" href="{% url 'post_list' %}">Home</a>
+                    {% comment %} <a href="#" class="text-gray-300 hover:text-white">About</a>
+                    <a href="#" class="text-gray-300 hover:text-white">Blog</a>
+                    <a href="#" class="text-gray-300 hover:text-white">Contact</a> {% endcomment %}
+                </div>
+                <div class="md:hidden">
+                    <button id="navbar-toggle" class="text-red-300 focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            <div id="navbar-menu" class="hidden md:hidden bg-gray-800">
+                <a href="#" class="block text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2">Home</a>
+                {% comment %} <a href="#" class="block text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2">About</a>
+                <a href="#" class="block text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2">Blog</a>
+                <a href="#" class="block text-gray-300 hover:bg-gray-700 hover:text-white px-4 py-2">Contact</a> {% endcomment %}
+            </div>
+        </nav>
+    </header>
+    
+
+    <main class='min-h-[60vh]'>
+        {% block content %}
+        <!-- This block will be overridden by child templates -->
+        {% endblock %}
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 py-8  w-full mt-1">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between">
+                <!-- About Section -->
+                <div class="mb-6 md:mb-0">
+                    <h4 class="text-white text-lg font-bold mb-4">About Us</h4>
+                    <p class="text-gray-400">We share insights, news, and stories from the world of blogging. Follow us to stay updated.</p>
+                </div>
+    
+                <!-- Quick Links Section -->
+                <div class="mb-6 md:mb-0">
+                    <h4 class="text-white text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Home</a></li>
+                        {% comment %} <li><a href="#" class="hover:text-white">About</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Contact</a></li>
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li> {% endcomment %}
+                    </ul>
+                </div>
+    
+                <!-- Contact Section -->
+                <div>
+                    <h4 class="text-white text-lg font-bold mb-4">Contact Us</h4>
+                    <p class="text-gray-400">Email: ifeakachukwu001@gmail.com</p>
+                    <p class="text-gray-400">Phone: +234 8059 083 317</p>
+                    <div class="flex space-x-4 mt-4">
+                        <a href="#" class="hover:text-white"><img src="facebook-icon.png" alt="Facebook" class="w-6 h-6"></a>
+                        <a href="#" class="hover:text-white"><img src="twitter-icon.png" alt="Twitter" class="w-6 h-6"></a>
+                        <a href="#" class="hover:text-white"><img src="instagram-icon.png" alt="Instagram" class="w-6 h-6"></a>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="border-t border-gray-700 mt-8 pt-4">
+                <p class="text-center text-gray-500">&copy; 2024 BlogWebsite. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    
+</body>
+<script>
+    document.querySelector('.navbar-toggle').addEventListener('click', function() {
+        this.classList.toggle('active');
+        document.querySelector('.navbar').classList.toggle('active');
+    });
+</script> 
+<script src="https://cdn.tailwindcss.com"></script>   
+</html>
+
+
